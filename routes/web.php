@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Membros;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +21,21 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('membros','App\Http\Controllers\MembroController');
+Route::resource('membros','MembrosController');
 
-Route::get('perfil/{id}','App\Http\Controllers\UserController@show')->name('perfil');
+Route::get('perfil/{id}','UserController@show')->name('perfil');
+
+Route::get('/membros/excluir/{membros}', function (App\Models\Membros $membros) {
+    return view('destroy', ['membros' => $membros]);
+})->name('membros.delete');
+
+Route::delete('/membros/excluir/{membros}', [App\Http\Controllers\MembrosController::class, 'destroy']);
+
+
+Route::get('/membros/editar/{membros}', function (App\Models\Membros $membros) {
+    return view('editar', ['membros' => $membros]);
+})->name('membros.editar');
+
+Route::put('/membros/editar/{membros}', [App\Http\Controllers\MembrosController::class, 'update']);
+
+

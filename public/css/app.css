@@ -11336,3 +11336,8 @@ textarea.form-control-lg {
 #imgLogo{
     width: 190px;
 }
+
+.form-control{
+  width: 50%;
+  
+}

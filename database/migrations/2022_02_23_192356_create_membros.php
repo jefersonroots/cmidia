@@ -15,7 +15,16 @@ class CreateMembros extends Migration
     {
         Schema::create('membros', function (Blueprint $table) {
             $table->id();
+            $table->string('CPF');
+            $table->string('nome');
+            $table->string('dt_nascimento');
+            $table->unsignedBigInteger('id_users');
             $table->timestamps();
+        });
+
+
+        Schema::table('membros', function(Blueprint $table){
+            $table->foreign('id_users')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

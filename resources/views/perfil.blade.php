@@ -15,6 +15,9 @@
                         </div>
                     @endif
                         <div id="alinhaLinha">
+                            <label for="email"><h5>ID:</h5></label> <br/>
+                        <input readonly value="{{ $id->id }}"/> <br/> <br/>
+                        
                         <label for="email"><h5>Email:</h5></label> <br/>
                         <input readonly value="{{ $id->email }}"/> <br/> <br/>
 

@@ -19,7 +19,8 @@ class MembrosController extends Controller
      */
     public function index()
     {
-        //
+        // $membros = Membros::all();
+        // return view('home', compact('membros') );
     }
 
     /**
@@ -29,7 +30,8 @@ class MembrosController extends Controller
      */
     public function create()
     {
-        //
+        return view('create', ['action'=>route('membros.store'), 'method'=>'post']);
+
     }
 
     /**
@@ -40,7 +42,17 @@ class MembrosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $url = $request->get('redirect_to', route('home'));
+    if (! $request->has('cancel') ){
+        $dados = $request->all();
+        Membros::create($dados);
+        $request->session()->flash('message', 'Membros cadastrado com sucesso');
+    }
+    else
+    { 
+        $request->session()->flash('message', 'Operação cancelada pelo usuário'); 
+    }
+    return redirect()->to($url);
     }
 
     /**
@@ -72,9 +84,23 @@ class MembrosController extends Controller
      * @param  \App\Models\Membros  $membros
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Membros $membros)
+    public function update(Membros $membros ,Request $request )
     {
-        //
+
+        // $membros = Membros::find($membros);
+        if (! $request->has('cancel') ){
+            $membros->CPF = $request->input('CPF');
+            $membros->nome = $request->input('nome');
+            $membros->dt_nascimento = $request->input('dt_nascimento');
+            $membros->id_users = $request->input('id_users');
+            $membros->update();
+            \Session::flash('message', 'Membro atualizado com sucesso !');
+        }
+        else
+        { 
+            $request->session()->flash('message', 'Operação cancelada pelo usuário'); 
+        }
+        return redirect()->route('home'); 
     }
 
     /**
@@ -83,8 +109,17 @@ class MembrosController extends Controller
      * @param  \App\Models\Membros  $membros
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Membros $membros)
+    public function destroy(Membros $membros, Request $request)
     {
-        //
+    
+        if (!$request->has('cancel') ){
+            $membros->delete();
+            \Session::flash('message', 'Membro excluído com sucesso !');
+        }
+        else
+        { 
+            $request->session()->flash('message', 'Operação cancelada pelo usuário'); 
+        }
+        return redirect()->route('home');
     }
 }
