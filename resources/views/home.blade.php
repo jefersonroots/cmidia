@@ -13,6 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                        aqui vai ficar a lista de membros <br/>
 
                     {{ __('You are logged in!') }}
                 </div>

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Membros extends Model
 {
     use HasFactory;
-}
+
+
+    public function endereco()
+    {
+        return $this->belongsToMany('App\Models\Endereco');
+    }
+
+};

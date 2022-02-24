@@ -40,7 +40,10 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
+    public function show($id){
+        $id = User::findOrFail($id);
+        return view('perfil',['id'=> $id]);
+    }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -55,6 +58,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:3', 'confirmed'],
         ]);
     }
+
+
 
     /**
      * Create a new user instance after a valid registration.
