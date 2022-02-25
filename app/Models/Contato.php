@@ -12,14 +12,12 @@ class Contato extends Model
     protected $fillable = [
         'numero_telefone',
         'tipo_telefone',
-
-
     ];
 
 
     public function membros()
     {
 
-        return $this->belongsToMany('App\Models\Membros');
+        return $this->belongsToMany('App\Models\Membros','membro_contatos','contato_id','membro_id');
     }
 }

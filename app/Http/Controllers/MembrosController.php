@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Membros;
 use App\Models\Contato;
+use App\Models\Endereco;
 
 
 use Illuminate\Http\Request;
@@ -50,6 +51,8 @@ class MembrosController extends Controller
         $dados = $request->all();
         Membros::create($dados);
         Contato::create($dados);
+        Endereco::create($dados);
+
         $request->session()->flash('message', 'Membros cadastrado com sucesso');
     }
     else

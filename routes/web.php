@@ -31,11 +31,10 @@ Route::get('/membros/excluir/{membros}', function (App\Models\Membros $membros) 
 
 Route::delete('/membros/excluir/{membros}', [App\Http\Controllers\MembrosController::class, 'destroy']);
 
-
 Route::get('/membros/editar/{membros}', function (App\Models\Membros $membros) {
     return view('editar', ['membros' => $membros]);
 })->name('membros.editar');
 
-// Route::put('/membros/editar/{membros}', [App\Http\Controllers\MembrosController::class, 'update']);
+
 
 

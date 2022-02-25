@@ -13,9 +13,9 @@ class CreateMembrosContato extends Migration
      */
     public function up()
     {
-        Schema::create('membros_contato', function (Blueprint $table) {
-            $table->foreignId('membro_id')->constrained();
-            $table->foreignId('contato_id')->constrained();
+        Schema::create('membro_contatos', function (Blueprint $table) {
+            $table->foreignId('membro_id')->constrained()->onDelete('cascade');
+            $table->foreignId('contato_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateMembrosContato extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('membros_contato');
+        Schema::dropIfExists('membro_contatos');
     }
 }

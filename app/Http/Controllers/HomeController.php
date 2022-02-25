@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Membros;
+use App\Models\MembroContato;
+use App\Models\User;
 class HomeController extends Controller
 {
     /**
@@ -24,7 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     { 
+
+        $users_membro = User::all();
         $membros = Membros::all();
-        return view('home', compact('membros') );
+
+        return view('home', compact('membros'),compact('users_membro') );
     }
 }

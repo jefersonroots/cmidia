@@ -20,12 +20,12 @@ class Membros extends Model
     public function endereco()
     {
 
-        return $this->belongsToMany('App\Models\Endereco','');
+        return $this->belongsToMany('App\Models\Endereco','membro_enderecos','membro_id','endereco_id');
     }
 
     public function contato()
     {
-        return $this->belongsToMany('App\Models\Contato');
+        return $this->belongsToMany('App\Models\Contato','membro_contatos','membro_id','contato_id');
     }
 
 };

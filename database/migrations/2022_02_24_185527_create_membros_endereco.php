@@ -13,9 +13,9 @@ class CreateMembrosEndereco extends Migration
      */
     public function up()
     {
-        Schema::create('membros_endereco', function (Blueprint $table) {
-            $table->foreignId('membro_id')->constrained();
-            $table->foreignId('endereco_id')->constrained();
+        Schema::create('membro_enderecos', function (Blueprint $table) {
+            $table->foreignId('membro_id')->constrained()->onDelete('cascade');
+            $table->foreignId('endereco_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateMembrosEndereco extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('membros_endereco');
+        Schema::dropIfExists('membro_enderecos');
     }
 }
