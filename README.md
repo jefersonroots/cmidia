@@ -31,10 +31,12 @@
 ### Passos utilizados para abrir o projeto após um git clone
    *  git clone https://github.com/jefersonroots/cmidia.git
    *  abrir repositório 
-   *  rodar o comando: composer install 
-   *  rodar o segundo comando: php artisan key:generate
-   *  rodar o terceiro comando: php artisan migrate
    *  renomear o .env.example para .env 
+   *  rodar o comando: composer install
+   *  rodar o comando: npm install  
+   *  rodar o comando: php artisan key:generate
+   *  rodar o comando: php artisan migrate
+   
    *  iniciar o projeto: php artisan serve
 
 --
