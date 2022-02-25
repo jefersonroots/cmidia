@@ -40,6 +40,8 @@
    *  iniciar o projeto: php artisan serve
 
 --
+## Diagrama de Classes
+<img src="https://user-images.githubusercontent.com/64113091/155742741-b81e4000-e6a9-424b-998e-19e23cbcefc6.png" alt="drawing" width="500" heigth="350" />.<br>
 
 ## Telas do Sistema
   > Principal Sem Logar: <br>
