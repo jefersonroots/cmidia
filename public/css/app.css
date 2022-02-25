@@ -82,7 +82,7 @@ body {
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
-  background-image: radial-gradient(circle at 10% 20%, rgb(223, 223, 238) 0%, rgb(234, 241, 249) 90.1%);
+  background-image: radial-gradient(circle at 92.3% 71.5%, rgb(83, 138, 214) 0%, rgb(134, 231, 214) 90%);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -11297,16 +11297,18 @@ textarea.form-control-lg {
     background-color: rgb(72, 177, 234);
     font-size: 30px;
     color:white;
-    -webkit-box-shadow: -6px -1px 17px 0px #ADADAD;
-    box-shadow: -6px -1px 17px 0px #ADADAD;
+    border:none;
+    margin: none;
+    /* -webkit-box-shadow: -6px -1px 17px 0px #ADADAD;
+    box-shadow: -6px -1px 17px 0px #ADADAD; */
 
 }
 #cardPerfil
 {
     border-radius: 5px;
     background-color: #fcfcfc;
-    -webkit-box-shadow: 0px 9px 18px 4px #ADADAD;
-    box-shadow: 0px 9px 18px 4px #ADADAD;
+    /* -webkit-box-shadow: 0px 9px 18px 4px #ADADAD;
+    box-shadow: 0px 9px 18px 4px #ADADAD; */
 
 }
 

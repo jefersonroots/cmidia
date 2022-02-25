@@ -55,7 +55,7 @@
             </div>
             <div>
                 <label for="numero_telefone">Numero de Contato</label>
-                <input class="form-control" type="text" id="numero_telefone" name="numero_telefone">
+                <input class="form-control" type="tel" id="numero_telefone" name="numero_telefone">
             </div>
             <div>
 

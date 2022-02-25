@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Membros;
 use App\Models\MembroContato;
 use App\Models\User;
@@ -25,12 +25,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $users_membro = User::all();
+        $users_membro = User::all('name'); 
+  
         $membros = Membros::all();
-
-        return view('home', compact('membros'), compact('users_membro'));
+       
+        return view('home', compact('membros'));
     }
 }

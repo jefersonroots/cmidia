@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Membros;
+use App\Models\MembroContato;
+use App\Models\MembroEndereco;
 use App\Models\Contato;
 use App\Models\Endereco;
 
@@ -43,15 +45,20 @@ class MembrosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Membros $membros)
     {
         $url = $request->get('redirect_to', route('home'));
         if (!$request->has('cancel')) {
-            $dados = $request->all();
+           
+            $dados = $request->all();            
             Membros::create($dados);
             Contato::create($dados);
-            Endereco::create($dados);
-
+            Endereco::create($dados);    
+           
+     
+             $id = Membros::Find(1);
+             MembroContato::create()->$id->id = $request->id;
+        
             $request->session()->flash('message', 'Membros cadastrado com sucesso');
         } else {
             $request->session()->flash('message', 'Operação cancelada pelo usuário');
