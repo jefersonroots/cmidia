@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Membros;
+use App\Models\Contato;
+
+
 use Illuminate\Http\Request;
 
 class MembrosController extends Controller
@@ -46,6 +49,7 @@ class MembrosController extends Controller
     if (! $request->has('cancel') ){
         $dados = $request->all();
         Membros::create($dados);
+        Contato::create($dados);
         $request->session()->flash('message', 'Membros cadastrado com sucesso');
     }
     else
@@ -90,7 +94,7 @@ class MembrosController extends Controller
             $membro-> CPF = $request->CPF;
             $membro-> nome = $request->nome;
             $membro-> dt_nascimento = $request->dt_nascimento;
-            $membro->update($request->except(['_token']));
+            $membro->update();
             \Session::flash('message', 'Membro atualizado com sucesso !');
 
         }

@@ -38,7 +38,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                  <?php
 
+
+
+                                   echo $roles = App\Models\aContato::find(1)->contatos()->get();
+                                   ?>
                                     @foreach ($membros as $membro)
                                         <tr>
                                             <td>{{ $membro->id }}</td>

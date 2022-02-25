@@ -13,12 +13,14 @@ class Membros extends Model
         'CPF',
         'nome',
         'dt_nascimento',
+        'id_users',
 
     ];
 
     public function endereco()
     {
-        return $this->belongsToMany('App\Models\Endereco');
+
+        return $this->belongsToMany('App\Models\Endereco','');
     }
 
     public function contato()

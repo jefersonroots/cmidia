@@ -27,7 +27,9 @@
             <label for="dt_nascimento">Data Nascimento: </label>
             <input  class="form-control" type="text" id="dt_nascimento" name="dt_nascimento" value="{{$membros->dt_nascimento}}">
         </div>
+        <div>
 
+        </div>
             <div class="form-group">
                 <br/>
                 <input type="submit"  class="btn btn-success" name="save_eqp" value="Atualizar">

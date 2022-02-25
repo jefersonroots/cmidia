@@ -9,6 +9,12 @@ class Endereco extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+
+
+
+
+    ];
 
 
     public function membros()

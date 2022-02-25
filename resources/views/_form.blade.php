@@ -44,7 +44,7 @@
     <div align="center" class=" col-sm-6">
         <div>
             <label for="tipo_telefone">Tipo de Telefone</label>
-            <select class="form-control" name="tipo_telefone">
+            <select class="form-control" id="tipo_telefone"  name="tipo_telefone">
                 <option value="celular">Celular</option>
                 <option value="fixo">Residencial</option>
                 <option value="trabalho">Trabalho</option>

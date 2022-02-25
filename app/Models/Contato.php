@@ -9,11 +9,17 @@ class Contato extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'numero_telefone',
+        'tipo_telefone',
 
-    
+
+    ];
+
 
     public function membros()
     {
+
         return $this->belongsToMany('App\Models\Membros');
     }
 }
