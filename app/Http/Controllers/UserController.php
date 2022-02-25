@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -10,10 +11,9 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-    public function show($id){
+    public function show($id)
+    {
         $id = User::findOrFail($id);
-        return view('perfil',['id'=> $id]);
+        return view('perfil', ['id' => $id]);
     }
-
-    
 }

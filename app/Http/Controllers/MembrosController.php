@@ -34,8 +34,7 @@ class MembrosController extends Controller
      */
     public function create()
     {
-        return view('create', ['action'=>route('membros.store'), 'method'=>'post']);
-
+        return view('create', ['action' => route('membros.store'), 'method' => 'post']);
     }
 
     /**
@@ -47,19 +46,17 @@ class MembrosController extends Controller
     public function store(Request $request)
     {
         $url = $request->get('redirect_to', route('home'));
-    if (! $request->has('cancel') ){
-        $dados = $request->all();
-        Membros::create($dados);
-        Contato::create($dados);
-        Endereco::create($dados);
+        if (!$request->has('cancel')) {
+            $dados = $request->all();
+            Membros::create($dados);
+            Contato::create($dados);
+            Endereco::create($dados);
 
-        $request->session()->flash('message', 'Membros cadastrado com sucesso');
-    }
-    else
-    {
-        $request->session()->flash('message', 'Operação cancelada pelo usuário');
-    }
-    return redirect()->to($url);
+            $request->session()->flash('message', 'Membros cadastrado com sucesso');
+        } else {
+            $request->session()->flash('message', 'Operação cancelada pelo usuário');
+        }
+        return redirect()->to($url);
     }
 
     /**
@@ -91,18 +88,15 @@ class MembrosController extends Controller
      * @param  \App\Models\Membros  $membros
      * @return \Illuminate\Http\Response
      */
-    public function update(Membros $membro ,Request $request )
+    public function update(Membros $membro, Request $request)
     {
-        if (!$request->has('cancel') ){
-            $membro-> CPF = $request->CPF;
-            $membro-> nome = $request->nome;
-            $membro-> dt_nascimento = $request->dt_nascimento;
+        if (!$request->has('cancel')) {
+            $membro->CPF = $request->CPF;
+            $membro->nome = $request->nome;
+            $membro->dt_nascimento = $request->dt_nascimento;
             $membro->update();
             \Session::flash('message', 'Membro atualizado com sucesso !');
-
-        }
-        else
-        {
+        } else {
             $request->session()->flash('message', 'Operação cancelada pelo usuário');
         }
         return redirect()->route('home');
@@ -117,12 +111,10 @@ class MembrosController extends Controller
     public function destroy(Membros $membros, Request $request)
     {
 
-        if (!$request->has('cancel') ){
+        if (!$request->has('cancel')) {
             $membros->delete();
             \Session::flash('message', 'Membro excluído com sucesso !');
-        }
-        else
-        {
+        } else {
             $request->session()->flash('message', 'Operação cancelada pelo usuário');
         }
         return redirect()->route('home');

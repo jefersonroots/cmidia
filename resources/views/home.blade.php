@@ -38,19 +38,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users_membro as $um)                                                           
-                                    @foreach ($membros as $membro)
-                                        <tr>
-                                            <td>{{ $membro->id }}</td>
-                                            <td>{{ $membro->nome }}</td>
-                                            <td>{{ $membro->CPF }}</td>
-                                            <td>{{ $membro->dt_nascimento }}</td>
-                                            <td>{{ $um->name }}</td>
-                                            <td><div align="center">
+                                    @foreach ($users_membro as $um)
+                                        @foreach ($membros as $membro)
+                                            <tr>
+                                                <td>{{ $membro->id }}</td>
+                                                <td>{{ $membro->nome }}</td>
+                                                <td>{{ $membro->CPF }}</td>
+                                                <td>{{ $membro->dt_nascimento }}</td>
+                                                <td>{{ $um->name }}</td>
+                                                <td>
+                                                    <div align="center">
 
 
-                                                        <a href="{{ route('membros.editar', ['membros' => $membro]) }}"> <svg
-                                                                xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                        <a href="{{ route('membros.editar', ['membros' => $membro]) }}">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                                 fill="currentColor" class="bi bi-pencil-square"
                                                                 viewBox="0 0 16 16">
                                                                 <path
@@ -59,7 +60,7 @@
                                                                     d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
 
                                                             </svg> </a>
- &nbsp; &nbsp; |&nbsp; &nbsp;
+                                                        &nbsp; &nbsp; |&nbsp; &nbsp;
                                                         <a href="{{ route('membros.delete', ['membros' => $membro]) }}">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                                 fill="currentColor" class="bi bi-trash3"
@@ -71,7 +72,7 @@
 
                                                 </td>
 
-                                        </tr>
+                                            </tr>
                                         @endforeach
                                     @endforeach
                                 </tbody>
