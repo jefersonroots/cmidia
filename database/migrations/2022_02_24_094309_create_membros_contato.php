@@ -14,7 +14,6 @@ class CreateMembrosContato extends Migration
     public function up()
     {
         Schema::create('membros_contato', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('membro_id')->constrained();
             $table->foreignId('contato_id')->constrained();
             $table->timestamps();

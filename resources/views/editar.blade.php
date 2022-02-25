@@ -1,12 +1,12 @@
 @extends('layouts.app')
- 
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
           <div class="card">
               <div id="blocoPerfil" class="card-header">{{ __('Editar Membro') }}</div>
-  
+
               <div id="cardPerfil"  class="card-body">
     <div align="center" class="row">
         <h3></h3>
@@ -23,14 +23,11 @@
             <label for="nome">Nome:</label>
             <input class="form-control" type="text" id="nome" name="nome" value="{{$membros->nome}}">
         </div>
-        <div> 
+        <div>
             <label for="dt_nascimento">Data Nascimento: </label>
             <input  class="form-control" type="text" id="dt_nascimento" name="dt_nascimento" value="{{$membros->dt_nascimento}}">
         </div>
-        <div> 
-            <label for="id_users">ID Usuário: </label>
-            <input  class="form-control" type="text" id="id_users" name="id_users" value="{{$membros->id_users}}">
-        </div>
+
             <div class="form-group">
                 <br/>
                 <input type="submit"  class="btn btn-success" name="save_eqp" value="Atualizar">

@@ -15,7 +15,7 @@ class CreateMembros extends Migration
     {
         Schema::create('membros', function (Blueprint $table) {
             $table->id();
-            $table->string('CPF');
+            $table->string('CPF')->unique();
             $table->string('nome');
             $table->string('dt_nascimento');
             $table->unsignedBigInteger('id_users');

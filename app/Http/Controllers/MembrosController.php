@@ -49,8 +49,8 @@ class MembrosController extends Controller
         $request->session()->flash('message', 'Membros cadastrado com sucesso');
     }
     else
-    { 
-        $request->session()->flash('message', 'Operação cancelada pelo usuário'); 
+    {
+        $request->session()->flash('message', 'Operação cancelada pelo usuário');
     }
     return redirect()->to($url);
     }
@@ -84,23 +84,21 @@ class MembrosController extends Controller
      * @param  \App\Models\Membros  $membros
      * @return \Illuminate\Http\Response
      */
-    public function update(Membros $membros ,Request $request )
+    public function update(Membros $membro ,Request $request )
     {
-
-        // $membros = Membros::find($membros);
-        if (! $request->has('cancel') ){
-            $membros->CPF = $request->input('CPF');
-            $membros->nome = $request->input('nome');
-            $membros->dt_nascimento = $request->input('dt_nascimento');
-            $membros->id_users = $request->input('id_users');
-            $membros->update();
+        if (!$request->has('cancel') ){
+            $membro-> CPF = $request->CPF;
+            $membro-> nome = $request->nome;
+            $membro-> dt_nascimento = $request->dt_nascimento;
+            $membro->update($request->except(['_token']));
             \Session::flash('message', 'Membro atualizado com sucesso !');
+
         }
         else
-        { 
-            $request->session()->flash('message', 'Operação cancelada pelo usuário'); 
+        {
+            $request->session()->flash('message', 'Operação cancelada pelo usuário');
         }
-        return redirect()->route('home'); 
+        return redirect()->route('home');
     }
 
     /**
@@ -111,14 +109,14 @@ class MembrosController extends Controller
      */
     public function destroy(Membros $membros, Request $request)
     {
-    
+
         if (!$request->has('cancel') ){
             $membros->delete();
             \Session::flash('message', 'Membro excluído com sucesso !');
         }
         else
-        { 
-            $request->session()->flash('message', 'Operação cancelada pelo usuário'); 
+        {
+            $request->session()->flash('message', 'Operação cancelada pelo usuário');
         }
         return redirect()->route('home');
     }

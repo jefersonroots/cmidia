@@ -1,9 +1,9 @@
 @extends('layouts.app')
- 
+
 @section('content')
-<div class="container">
+<div class="container  col-md-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="">
             <div class="card">
                 <div id="blocoPerfil" class="card-header">{{ __('Novo Membro') }}</div>
 
@@ -16,7 +16,7 @@
                     <div class="row">
                         <h3></h3>
                         @include('_form')
-                        
+
                         <div align="center" class="form-group">
                             <br/>
                             <input  class="btn btn-success" type="submit" name="save_eqp" value="Salvar Membro">
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
     </form>
 </div>
 @endsection

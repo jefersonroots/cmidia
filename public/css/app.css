@@ -1,4 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+
+
 @charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
@@ -11339,5 +11341,5 @@ textarea.form-control-lg {
 
 .form-control{
   width: 50%;
-  
+
 }
