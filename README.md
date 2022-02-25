@@ -40,9 +40,13 @@
 --
 
 ## Telas do Sistema
-  > Principal: <br>
-<img src="https://user-images.githubusercontent.com/64113091/153602131-f5b74786-b182-4961-a3be-23b713e17a15.JPG" alt="drawing" width="500" heigth="350" />.
+  > Principal Sem Logar: <br>
+<img src="https://user-images.githubusercontent.com/64113091/155738817-ff117a48-cde4-49c4-825e-8ede399eb759.png" alt="drawing" width="500" heigth="350" />.
+  > Principal Logado: <br>
+<img src="https://user-images.githubusercontent.com/64113091/155739126-b3fd38a7-7db8-4e88-8b51-09c577b5afcf.png" alt="drawing" width="500" heigth="350" />.
   
+
+
 
 
 
