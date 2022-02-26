@@ -37,15 +37,15 @@
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
-                                <tbody>                                                                           
-                                        @foreach($membros as $membro)                                           
-                                         <?php $select ?>                                    
+                                <tbody>
+                                        @foreach($membros as $membro)
+                                         <?php $select ?>
                                             <tr>
                                                 <td>{{ $membro->id }}</td>
                                                 <td>{{ $membro->nome }}</td>
                                                 <td>{{ $membro->CPF }}</td>
                                                 <td>{{ $membro->dt_nascimento }}</td>
-                                                <td>{{ $membro->name }}</td>
+                                                <td>{{ $membro->id_users }}</td>
                                                 {{-- <td>{{ $um->name}}</td> --}}
                                                 <td>
                                                     <div align="center">
@@ -74,7 +74,7 @@
                                                 </td>
 
                                             </tr>
-                                  
+
                                     @endforeach
                                 </tbody>
                             </table>

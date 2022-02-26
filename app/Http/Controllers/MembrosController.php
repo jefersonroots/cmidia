@@ -49,16 +49,27 @@ class MembrosController extends Controller
     {
         $url = $request->get('redirect_to', route('home'));
         if (!$request->has('cancel')) {
-           
-            $dados = $request->all();            
+
+            $dados = $request->all();
             Membros::create($dados);
             Contato::create($dados);
-            Endereco::create($dados);    
-           
-     
-             $id = Membros::Find(1);
-             MembroContato::create()->$id->id = $request->id;
-        
+            Endereco::create($dados);
+
+           //  relacionando membro com contato e endereco pela tabela pivot
+            // contato
+            $mc_insert = new MembroContato;
+            $mc_insert->membro_id =  Membros::latest('id')->first()->id;
+            $mc_insert->contato_id =  Contato::latest('id')->first()->id;
+            $mc_insert->save();
+
+            // endereco
+            $mc_insert = new MembroEndereco;
+            $mc_insert->membro_id =  Membros::latest('id')->first()->id;
+            $mc_insert->endereco_id = Endereco::latest('id')->first()->id;
+            $mc_insert->save();
+
+
+
             $request->session()->flash('message', 'Membros cadastrado com sucesso');
         } else {
             $request->session()->flash('message', 'Operação cancelada pelo usuário');
