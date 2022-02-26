@@ -28,10 +28,10 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 
-        $users_membro = User::all('name'); 
-  
+        $users_membro = User::all('id');
+
         $membros = Membros::all();
-       
-        return view('home', compact('membros'));
+
+        return view('home', compact('membros'), compact('users_membro'));
     }
 }

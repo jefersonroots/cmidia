@@ -11299,17 +11299,19 @@ textarea.form-control-lg {
     color:white;
     border:none;
     margin: none;
-    /* -webkit-box-shadow: -6px -1px 17px 0px #ADADAD;
-    box-shadow: -6px -1px 17px 0px #ADADAD; */
+    box-shadow: 0px 1px 3px 2px #529fcd;
+    -webkit-box-shadow: 0px 1px 3px 2px #529fcd;
+    -moz-box-shadow: 0px 1px 3px 2px #529fcd;
 
 }
 #cardPerfil
 {
-    border-radius: 5px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
     background-color: #fcfcfc;
-    /* -webkit-box-shadow: 0px 9px 18px 4px #ADADAD;
-    box-shadow: 0px 9px 18px 4px #ADADAD; */
-
+    box-shadow: 0px 1px 3px 2px #529fcd;
+    -webkit-box-shadow: 0px 1px 3px 2px #529fcd;
+    -moz-box-shadow: 0px 1px 3px 2px #529fcd;
 }
 
 #alinhaLinha{
@@ -11344,4 +11346,18 @@ textarea.form-control-lg {
 .form-control{
   width: 100%;
   text-align: center;
+}
+
+#cardd{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 100px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+        border-width: 2%;
+        background-color: #04414d;
+
+
 }
