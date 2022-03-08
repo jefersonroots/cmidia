@@ -36,6 +36,6 @@ Route::get('/membros/editar/{membros}', function (App\Models\Membros $membros) {
 })->name('membros.editar');
 
 
-Route::get('chat/{id}','UserController@show')->name('perfil');
+Route::get('chat/{id}','UserController@show')->name('chat');
 
 
