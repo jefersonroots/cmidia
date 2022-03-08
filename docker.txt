@@ -1,0 +1,41 @@
+##### Build container docker compose
+
+Container: é o local onde a sua aplicação ficará rodando.
+
+Imagem: É como um snapshot. Outros desenvolvedores com acesso a esta imagem, 
+terão os mesmos recursos que você utiliza e configurou em seu container.
+
+
+COMANDOS:
+ -  docker ps :  esse comando irá lhe mostrar quais o conteineres foram criados e estão rodando.
+ -  docker images : esse comando mostra quais imagens foram criadas.
+
+ 
+Dockerfile:
+    =:> é um arquivo de texto que contém as instruções necessárias para criar uma nova imagem de contêiner
+        utilizaremos uma imagem Docker que nos trará o PHP-FPM e o Nginx já configurados (https://hub.docker.com/)
+
+ no arquivo Dockerfile que criamos, inserimos o seguinte código:
+    => FROM wyveo/nginx-php-fpm:latest
+    => A instrução FROM define a imagem de container que será usada durante o processo de criação de nova imagem, 
+    => wyveo/nginx-php-fpm é o endereço da imagem e
+    => latest indica que queremos a versão mais atual dessa imagem.
+
+
+Docker Compose:
+    => Ferramenta do Docker que, a partir de diversas especificações, permite subir diversos containeres e relacioná-los através de redes internas.
+
+
+---
+services: declara quais serviços serão rodados, nesse caso, chamaremos de laravel-app.
+build: declara o nome da imagem, ou, no caso, se declararmos o ., ele irá “chamar” a imagem declarada no Dockerfile.
+ports: realiza a liberação das portas. Na minha máquina eu quero que libere a porta 8080, porém, lá no meu container eu quero que seja liberada a porta 80, ou seja, toda vez que eu acessar o meu localhost
+com a porta 8080 o Docker irá redirecionar para a porta 80 o nginx criado no container.
+
+ CRIAR um arquivo chamado de docker-compose.yaml.
+    =::> version: '3'
+         services:
+         laravel-app:
+             build: .
+             ports:
+             - "8080:80"
