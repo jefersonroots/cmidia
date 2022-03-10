@@ -1,0 +1,38 @@
+O git merge junta os trabalhos e gera um merge commit. 
+O git rebase aplica os commits de outra branch na branch atual.
+O git branch 'nome brach' cria uma nova ramificação 
+O git checkout 'nome branch' seleciona a branch como atual estação de trabalhos
+O git add . adiciona todas as alterações. 
+O git commit 'nova attualizacao' faz o commit das att para a branch selecionada 
+O git status para saber quais as novas alterações foram feitas 
+O git log é para ver o historicos dos nossos commits 
+O git push é para empurrar as informações para o repositorio. 
+O git pull é para pegar as informações
+
+--- 
+como desfazer as alterações: 
+    como desfazer commit 
+        git revert + 'log' que foi pego no git log. 
+
+        desfazer alteração antes do git add 
+        git checkout -- 'nome arquivo'
+
+
+     depois de  adicioná-las (1): git checkout -- 'nome'
+        antes de commitá-las ou seja, depois do git add . (2) : git reset 
+        após realizar o commit, ou seja, após o git commit (3) : git revert
+
+
+--- 
+ GUARDAR PRA DEPOIS - > GIT STASH
+ Quando precisamos parar o desenvolvimento de algo no meio para trabalhar em outra coisa
+    git stash -> salva as alterações no estado atual
+    agora tudo que for feito apartir daq sera comitado menos as alterações anteriores
+    
+    git stash list -> tudo que ta parado
+
+    git stash pop -> tira a ultima alteração e da merge no que vc ja fez para continuar 
+    
+git checkout --help, em uma tradução livre é: "Atualizar os arquivos na working tree para ficarem na versão especificada. [...]".
+git checkout <branch> deixa o código no estado de uma branch com o nome <branch>;
+git checkout <hash> deixa o código no estado do commit com o hash <hash>.

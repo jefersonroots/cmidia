@@ -62,13 +62,20 @@
                                 </li>
                             @endif
                         @else
+                        <a id="navbarDropdown" class="nav-link " href="{{ url('/chat', Auth::user()->id) }}" role="button"
+                       aria-haspopup="true" aria-expanded="false" >
+                       {{ __('Chat') }}
+                        </a>
+                   
                             <li class="nav-item dropdown">
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                 
                                     <a class="dropdown-item" href="{{ url('/perfil', Auth::user()->id) }}">
                                         Perfil
                                     </a>
