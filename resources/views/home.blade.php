@@ -25,14 +25,19 @@
                             <br />
                         </div>
                         <br />
-
+                        {{-- @foreach ($membros2 as $users )
+                       
+                        <p class="card-text">
+                            USER: {{ $users->id }}
+                         </p>
+                        @endforeach --}}
 
                                         <div  class="container-fluid">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="row">
-                                                        @foreach ($membros as $membro )
-
+                                                        @foreach ($membros2 as $membro )
+                                                             
                                                         <div class="col-md-4">
                                                             <br>
                                                             <div  align="center" class="card">
@@ -48,6 +53,9 @@
                                                                     <p class="card-text">
                                                                         Aniversário: {{ $membro->dt_nascimento }}
                                                                      </p>
+                                                                                {{-- <p class="card-text">
+                                                                    User: {{ $membro->id_users }}
+                                                                     </p> --}}
                                                                 </div>
                                                                 <br />
                                                                 <div class="row">
