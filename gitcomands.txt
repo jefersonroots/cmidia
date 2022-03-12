@@ -36,3 +36,7 @@ como desfazer as alterações:
 git checkout --help, em uma tradução livre é: "Atualizar os arquivos na working tree para ficarem na versão especificada. [...]".
 git checkout <branch> deixa o código no estado de uma branch com o nome <branch>;
 git checkout <hash> deixa o código no estado do commit com o hash <hash>.
+
+
+-----------------
+ Execute o comando git push origin v0.1.0 para enviar esta tag para o GitHub;
