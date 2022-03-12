@@ -28,10 +28,14 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 
-        $users_membro = User::all('id');
+        $users_membro = User::Find(2);
+        $id_users = auth()->user()->id;
+      
+        // $membros = Membros::all();
 
-        $membros = Membros::all();
-
-        return view('home', compact('membros'), compact('users_membro'));
+      $membros2 = Membros::where('id_users','=',$id_users)->get();
+    //    $membros = Membros::where('id','=',1);
+        array($membros2);
+        return view('home', compact('membros2'), compact('users_membro'));
     }
 }
