@@ -7,8 +7,9 @@ use App\Models\MembroContato;
 use App\Models\MembroEndereco;
 use App\Models\Contato;
 use App\Models\Endereco;
-
-
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use App\Models\MembroToken;
 use Illuminate\Http\Request;
 
 class MembrosController extends Controller
@@ -113,6 +114,15 @@ class MembrosController extends Controller
             $membro->nome = $request->nome;
             $membro->dt_nascimento = $request->dt_nascimento;
             $membro->update();
+
+            
+            
+            $membro_token = new MembroToken;
+            $membro_token ->token =  Hash::make( $membro->CPF);
+            $membro ->expires_at = now()->addMinutes(525600);
+            $membro_token->membro_id =  Membros::latest('id')->first()->id;
+            $membro_token->save();
+
             \Session::flash('message', 'Membro atualizado com sucesso !');
         } else {
             $request->session()->flash('message', 'Operação cancelada pelo usuário');
@@ -137,4 +147,9 @@ class MembrosController extends Controller
         }
         return redirect()->route('home');
     }
+
+
+
+
+
 }
