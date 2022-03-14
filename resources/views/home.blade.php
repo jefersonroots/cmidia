@@ -89,7 +89,8 @@
                                                     <br />
                                                     <div id="linha-horizontal"></div>
                                                     
-                                                    <h4><a fill="currentColor" style="color:rgba(63, 241, 152, 0.79);text-decoration:none;" href="#" class="card-text">
+                                                    <h4><a fill="currentColor" style="color:rgba(63, 241, 152, 0.79);text-decoration:none;" 
+                                                        href="{{ route('tokens') }}" class="card-text">
                                                         Gerar Token                                                    
                                                     </a></h4>
                                                 </div>

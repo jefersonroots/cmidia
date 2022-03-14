@@ -1,33 +1,34 @@
 <?php
-
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\URL;
 
 class MagicLoginLink extends Mailable
 {
-    use Queueable, SerializesModels;
+  use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
+  public $plaintextToken;
+  public $expiresAt;
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-    public function build()
-    {
-        return $this->view('view.name');
-    }
+  public function __construct($plaintextToken, $expiresAt)
+  {
+    $this->plaintextToken = $plaintextToken;
+    $this->expiresAt = $expiresAt;
+  }
+
+  public function build()
+  {
+    return $this->subject(
+      config('app.name') . ' Login Verification'
+    )->markdown('emails.magic-login-link', [
+      'url' => URL::temporarySignedRoute('verify-login', $this->expiresAt, [
+        'token' => $this->plaintextToken,
+      ]),
+    ]);
+  }
 }
+
+?>

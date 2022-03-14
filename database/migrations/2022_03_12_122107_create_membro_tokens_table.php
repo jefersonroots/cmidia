@@ -15,8 +15,8 @@ class CreateMembroTokensTable extends Migration
     {
         Schema::create('membro_tokens', function(Blueprint $table) {
             $table->id(); 
-            $table->unsignedBigInteger('membro_id');
-            $table->foreign('membro_id')->references('id')->on('membros')->cascadeOnDelete(); 
+            $table->unsignedBigInteger('membros_id');
+            $table->foreign('membros_id')->references('id')->on('membros')->cascadeOnDelete(); 
             $table->string('token')->unique();
             $table->timestamp('consumed_at')->nullable();
             $table->datetime('expires_at');
