@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use App\Models\MembroToken;
-
+use Illuminate\Support\Facades\URL;
 class Membros extends Model
 {
     use HasFactory;
@@ -44,8 +44,12 @@ class Membros extends Model
     $token = $this->membroTokens()->create([
       'token' => hash('sha256', $plaintext),
       'expires_at' => now()->addMinutes(15),
+    
     ]);
     Mail::to($this->email)->queue(new MagicLoginLink($plaintext, $token->expires_at));
+    // $url = URL::temporarySignedRoute('verify-login', $this->expiresAt, [
+    //     'token' => $this->plaintextToken,
+    // ]);
 }
 
 

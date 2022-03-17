@@ -39,7 +39,7 @@ Route::get('perfil/{id}','UserController@show')->name('perfil');
 
 Route::get('chat/{id}','ChatController@principal')->name('chat');
 
-Route::get('/gerar_token','ChatController@ind')->name('tokens');
+Route::get('/gerar_token','ChatController@ind')->name('tokens'); // ta caindo aqui a
 
 Route::get('verify-login/{token}', [ChatController::class, 'verifyLogin'])->name('verify-login');
 
@@ -47,14 +47,8 @@ Route::get('/chat',  [App\Http\Controllers\HomeController::class, 'index'], func
     return view('chat');
 })->middleware('auth');
 
-Route::post('/chat' ,'ChatController@login')->name('chatLogin')->middleware('auth');
+Route::post('/chat' ,'ChatController@login')->name('chatLogin');
 
-Route::get('/chat2', function () {
+Route::get('/chat2' ,'ChatController@principal')->name('chat2');
 
-    return view('chat2');
-})->middleware('auth');
-
-Route::group(['middleware' => ['guest']], function() {
-    Route::post('/chat2' ,'ChatController@login')->name('chat2')->middleware('auth');
-
-  });
+Route::get('/chat2/verificar/' ,'ChatController@verificaToken')->name('chat2.verificar');

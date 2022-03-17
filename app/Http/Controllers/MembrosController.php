@@ -7,12 +7,9 @@ use App\Models\MembroContato;
 use App\Models\MembroEndereco;
 use App\Models\Contato;
 use App\Models\Endereco;
-use App\Models\User;
-use App\Models\MembroToken;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\MagicLoginLink;
+use App\Models\MembroToken;
 use Illuminate\Http\Request;
 
 class MembrosController extends Controller
@@ -49,7 +46,6 @@ class MembrosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    
     public function store(Request $request, Membros $membros)
     {
         $url = $request->get('redirect_to', route('home'));
@@ -72,7 +68,9 @@ class MembrosController extends Controller
             $mc_insert->membro_id =  Membros::latest('id')->first()->id;
             $mc_insert->endereco_id = Endereco::latest('id')->first()->id;
             $mc_insert->save();
-           
+
+
+
             $request->session()->flash('message', 'Membros cadastrado com sucesso');
         } else {
             $request->session()->flash('message', 'Operação cancelada pelo usuário');
@@ -119,11 +117,11 @@ class MembrosController extends Controller
 
             
             
-            // $membro_token = new MembroToken;
-            // $membro_token ->token =  Hash::make( $membro->CPF);
-            // $membro ->expires_at = now()->addMinutes(525600);
-            // $membro_token->membro_id =  Membros::latest('id')->first()->id;
-            // $membro_token->save();
+            $membro_token = new MembroToken;
+            $membro_token ->token =  Hash::make( $membro->CPF);
+            $membro ->expires_at = now()->addMinutes(525600);
+            $membro_token->membro_id =  Membros::latest('id')->first()->id;
+            $membro_token->save();
 
             \Session::flash('message', 'Membro atualizado com sucesso !');
         } else {
@@ -150,8 +148,9 @@ class MembrosController extends Controller
         return redirect()->route('home');
     }
 
+
+
+
  
 
   
-
-}

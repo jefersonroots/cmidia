@@ -19,10 +19,7 @@ use App\Models\MembroToken;
 
 class ChatController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
     public function login(Request $request)
     {
         $data = $request->validate([
@@ -39,25 +36,47 @@ class ChatController extends Controller
         $token = \App\Models\MembroToken::whereToken(hash('sha256', $token))->firstOrFail();
         abort_unless($request->hasValidSignature() && $token->isValid(), 401);
         $token->consume();
-        Auth::login($token->user);
+        // Auth::login($token->user);
         return redirect('/chat2');
     }
-    public function ind()
-    {
+  
 
-        return view('gerar_token');
-    }
-
-    public function principal($id)
+    public function principal()
     {
 
         // $token = Membros::findOrFail($token);
 
-        $id = User::findOrFail($id);
+        // $id = User::findOrFail($id);
         // if (Hash::check('plain-text', $token)) {
         //     // The passwords match...
         // }
-        return view('chat', ['id' => $id]);
+        return view('chat2');
         // return (" olá ao chat");
     }
+    public function ind(Request $request)
+    {
+        
+            $token = $request
+            ->session()
+            ->get('token');
+            return view('gerar_token', compact('token'));
+      
+    }
+    public function verificaToken(Request $request){
+        $token = $request->token; // pego meu token 
+        $verify = MembroToken::where('token', $token)->get(); // verifico se tem no banco 
+        $qtd = $verify->count(); // faço a contagem de linha de retorno
+        if($qtd >= 0 & $qtd != null){
+            session()->put('token', $token);
+    return redirect()->route('tokens')->with('status', 'Oi, bom ver que você esta aqui.');
+        }
+        else 
+        {
+            return redirect()->back()->with('error', 'Ahh você não deveria estar aqui.');
+        }
+
+
+}
+
+
 }

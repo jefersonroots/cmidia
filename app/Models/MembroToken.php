@@ -41,16 +41,16 @@ class MembroToken extends Model
     //    $this->save();
     }
 
-    public function sendLoginLink()
-    {
-        $plaintext = Str::random(32);
-        $token = $this->create([
-          'token' => hash('sha256', $plaintext),
-          'expires_at' => now()->addMinutes(15),
-          'id_users' => '1'    //    'membro_id' =>  Membros::latest('id')->first()->id,
-        ]);
-        Mail::to($this->email)->queue(new MagicLoginLink($plaintext, $token->expires_at));
-    }
+    // public function sendLoginLink()
+    // {
+    //     $plaintext = Str::random(32);
+    //     $token = $this->create([
+    //       'token' => hash('sha256', $plaintext),
+    //       'expires_at' => now()->addMinutes(15),
+    //       'id_users' => '1'    //    'membro_id' =>  Membros::latest('id')->first()->id,
+    //     ]);
+    //     Mail::to($this->email)->queue(new MagicLoginLink($plaintext, $token->expires_at));
+    // }
     
 
 }

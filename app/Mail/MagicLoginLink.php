@@ -21,13 +21,12 @@ class MagicLoginLink extends Mailable
 
   public function build()
   {
-    return $this->subject(
-      config('app.name') . ' Login Verification'
-    )->markdown('emails.magic-login-link', [
+    return $this->view('chat2',[
       'url' => URL::temporarySignedRoute('verify-login', $this->expiresAt, [
         'token' => $this->plaintextToken,
       ]),
     ]);
+    
   }
 }
 
