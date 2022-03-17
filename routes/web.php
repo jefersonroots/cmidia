@@ -52,9 +52,5 @@ Route::post('/chat' ,'ChatController@login')->name('chatLogin')->middleware('aut
 Route::get('/chat2', function () {
 
     return view('chat2');
-})->middleware('auth');
+});
 
-Route::group(['middleware' => ['guest']], function() {
-    Route::post('/chat2' ,'ChatController@login')->name('chat2')->middleware('auth');
-
-  });
