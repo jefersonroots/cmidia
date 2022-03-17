@@ -62,7 +62,7 @@
                                 </li>
                             @endif
                         @else
-                        <a id="navbarDropdown" class="nav-link " href="{{ url('/chat', Auth::user()->id) }}" role="button"
+                        <a id="navbarDropdown" class="nav-link " href="{{ url('/chat') }}" role="button"
                        aria-haspopup="true" aria-expanded="false" >
                        {{ __('Chat') }}
                         </a>

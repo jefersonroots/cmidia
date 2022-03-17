@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MagicLoginLink;
 use App\Http\Controllers\ChatController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,6 +18,7 @@ class Membros extends Model
         'nome',
         'dt_nascimento',
         'id_users',
+        'email',
 
     ];
 
@@ -35,5 +37,16 @@ class Membros extends Model
     { 
         return $this->hasMany(MembroToken::class);
     }
+
+    public function sendLoginLink()
+{
+    $plaintext = Str::random(32);
+    $token = $this->membroTokens()->create([
+      'token' => hash('sha256', $plaintext),
+      'expires_at' => now()->addMinutes(15),
+    ]);
+    Mail::to($this->email)->queue(new MagicLoginLink($plaintext, $token->expires_at));
+}
+
 
 };
